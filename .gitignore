@@ -15,6 +15,6 @@ target/
 bin/
 .settings/
 .classpath
-.project]
+.project
 *.log
 .DS_Store

@@ -16,20 +16,41 @@
 
 package kr.co.killers.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"kr.co.killers.bpm.service","kr.co.killers.bpm.dao","kr.co.killers.controller"})
-@Import(value = { 
-		DatasourceConfiguration.class,
-		MvcConfiguration.class
-})
-public class ApplicationContext{
-	    
+@ComponentScan(basePackages = { "kr.co.killers.bpm.service", "kr.co.killers.bpm.dao", "kr.co.killers.controller" })
+@Import(value = { DatasourceConfiguration.class, MvcConfiguration.class })
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class ApplicationContext extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private DataSource dataSource;
 
+	@Autowired
+	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+		auth.jdbcAuthentication().dataSource(dataSource)
+				.usersByUsernameQuery("select USERNAME, passwd, '1' as enabled from users where username=?")
+				.authoritiesByUsernameQuery("select username, role from userroles where username=?");
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/resources/**").permitAll().antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").anyRequest().authenticated().and()
+				.formLogin();
+	}
 }

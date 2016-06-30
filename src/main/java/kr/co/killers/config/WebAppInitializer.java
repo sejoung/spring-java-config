@@ -13,9 +13,6 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WebAppInitializer implements WebApplicationInitializer {
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		AnnotationConfigWebApplicationContext rootContext = new AnnotationConfigWebApplicationContext();
-		rootContext.register(ApplicationContext.class);
-
 		this.addDispatcherServlet(servletContext);
 		this.addUtf8CharacterEncodingFilter(servletContext);
 	}

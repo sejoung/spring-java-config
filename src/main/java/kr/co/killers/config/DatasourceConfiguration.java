@@ -61,7 +61,8 @@ public class DatasourceConfiguration {
 		}
 		return (DataSource) dataSource.getObject();
 	}
-
+	
+	@Bean(name = "dataSource")
 	public DataSource dataSource() {
 		Log4jdbcProxyDataSource logDataSource = new Log4jdbcProxyDataSource(jdbcDataSource());
 		Log4JdbcCustomFormatter logFormatter = new Log4JdbcCustomFormatter();

@@ -31,7 +31,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = { "kr.co.killers.bpm.service", "kr.co.killers.bpm.dao", "kr.co.killers.controller" })
+@ComponentScan(basePackages = { "kr.co.killers.bpm.service", "kr.co.killers.bpm.dao", "kr.co.killers.bpm.controller" })
 @Import(value = { DatasourceConfiguration.class, MvcConfiguration.class })
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -42,7 +42,7 @@ public class ApplicationContext extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication().dataSource(dataSource)
+		auth.eraseCredentials(false).jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("select USERNAME, passwd, '1' as enabled from users where username=?")
 				.authoritiesByUsernameQuery("select username, role from userroles where username=?");
 	}

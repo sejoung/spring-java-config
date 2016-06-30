@@ -9,6 +9,8 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +28,11 @@ public class TestController {
 	@RequestMapping(value = "/test.do")
 	public String redisNonceTypeOUpdateSample(HttpSession session, HttpServletRequest request, HttpServletResponse response, @RequestParam Map<String, Object> params, ModelMap modelMap) throws Exception {
 		log.info("parameters : " + params);
-		testService.test(session, request, response, modelMap, params);
+		User userDetails =
+				 (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	    log.info("name : " + userDetails.getUsername());
+	    log.info("userDetails : " + userDetails.getPassword());
+	    testService.test(session, request, response, modelMap, params);
 		request.setAttribute("data", modelMap);
 
 		return "test";

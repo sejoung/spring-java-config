@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+/* Reset */
+body {width:100%;height:100%;font-size:0.75em;font-family:Gulim, Dotum, Arial;color:#555;background:#fff;}
+html, body, h1, h2, h3, h4, h5, h6, div, p, blockquote, pre, code, address, ul, ol, li, 
+dl, dt, dd, table, thead, tbody, tfoot, caption, th, td, form, fieldset, legend, hr, input, button, textarea, object {margin:0;padding:0;}
+ul, ol ,li{list-style:none;}
+img {vertical-align:middle;border:0;}
+table {border-spacing:0;border:0;border-collapse:collapse;}
+fieldset, abbr, button {border:0;}
+address, caption, cite, code, em {font-style:normal;font-weight:normal;}
+input, select, textarea, button, label {font-size:1em;color:#333;vertical-align:middle;}
+caption, legend {visibility:hidden;width:0; height:0;line-height:0;font-size:0;overflow:hidden;}
+hr {display:none;}
+.hide {position:absolute;visibility:hidden;width:0;height:0;font-size:0;line-height:0;overflow:hidden;}
+
+/* Link_Style */
+a:link {color:#333;text-decoration:none;}
+a:visited {color:#333;text-decoration:none;}
+a:hover {color:#1183d3;text-decoration:none;}
+a:active {color:#333;text-decoration:none;}
+
+/* Heading */
+h1 {font-size:2em;}
+h2 {font-size:1.8em;}

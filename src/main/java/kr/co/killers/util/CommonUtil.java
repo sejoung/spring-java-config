@@ -1,8 +1,18 @@
 package kr.co.killers.util;
 
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import kr.co.killers.bpm.controller.TestController;
 
 public class CommonUtil {
 	
@@ -25,6 +35,7 @@ public class CommonUtil {
      */
     public static Object parseRequestJson(String body,  Class<?> classzz) {
         return GSON.fromJson(body, classzz);
-    }	
+    }
+   
 
 }

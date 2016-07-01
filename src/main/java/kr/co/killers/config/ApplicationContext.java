@@ -32,7 +32,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableAspectJAutoProxy
 @ComponentScan(basePackages = { "kr.co.killers.bpm.service", "kr.co.killers.bpm.dao", "kr.co.killers.bpm.controller" })
-@Import(value = { DatasourceConfiguration.class, MvcConfiguration.class })
+@Import(value = { DatasourceConfiguration.class, MvcConfiguration.class, JbpmConfiguration.class })
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationContext extends WebSecurityConfigurerAdapter {
@@ -51,6 +51,7 @@ public class ApplicationContext extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/resources/**").permitAll().antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").anyRequest().authenticated().and()
-				.formLogin();
+				.formLogin().loginPage("/login").usernameParameter("id").passwordParameter("pw").permitAll().and()
+				.csrf().and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
 }

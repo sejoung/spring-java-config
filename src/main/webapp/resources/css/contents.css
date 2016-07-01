@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+@import url(layout.css);
+@import url(common.css);
+
+
+/* login */
+body.login {background:url('../images/bg_login.gif') repeat-x left top}
+.login_logo {width:627px;margin:0 auto;padding-top:52px;text-align:center;}
+.login_wrap {position:relative;width:627px;height:564px;min-height:685px;margin:0 auto;padding-bottom:100px;background:url('../images/bg_login.jpg') no-repeat left top;}
+.login_ti {position:absolute;top:365px;left:100px;}
+.login_box {position:relative;width:627px;background:url('../images/bg_login_box.gif') no-repeat left top;}
+.login_input {position:relative;width:290px;padding:330px 0 0 295px;}
+.login_input li {margin-bottom:11px;}
+.login_input .intype {height:44px;padding-left:7px;*height:34px;*padding:10px 0 0 7px;font-size:18px;border:1px solid #97b5d2;color:#666;background:#f7fcff;}
+@media \0screen { .login_input .intype {height:34px;padding:10px 0 0 7px;} }
+.login_input .ov_label {padding:12px 0 0 10px;cursor:pointer;}
+.login_wrap .idsave {color:#5f6a75;font-size:13px;margin:11px 0 0 295px;}
+.login_wrap .idsave label {color:#5f6a75;}
+
+/* Board_List */
+.board_list {width:100%;border-top:2px solid #549fde;border-bottom:1px solid #549fde;clear:both;line-height:1.4em;}
+.board_list th {padding:9px 0 8px 0;color:#3c96e0;border-bottom:1px solid #e6e6e6;text-align:center;background:#f6f6f6 url('../images/common/bg_th.gif') no-repeat left top;}
+.board_list th.first {background-image:none;}
+.board_list td {padding:8px 0 7px 0;color:#555;border-bottom:1px solid #e6e6e6;background:#fff;text-align:center;}
+.board_list td.first,.board_list td.nodata {min-height:62px;}
+.board_list .tleft {padding:8px 0 7px 12px;text-align:left;}
+.board_list .tleft strong {font-weight:normal;}
+.board_list .tit {padding:8px 0 7px 20px;text-align:left;}
+.board_list .blue a {color:#3c96e0;}
+.board_list tr.sum td {background:#f6f6f6;}
+.board_list .coment_num {color:#ff6c00;}
+.board_list tbody tr.last-child td {border-bottom:0;}
+

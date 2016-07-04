@@ -14,8 +14,8 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<kie.version>6.3.0.Final-redhat-5</kie.version>
-		<drools-version>6.3.0.Final-redhat-5</drools-version>
+		<kie.version>6.4.0.Final-redhat-3</kie.version>
+		<drools-version>6.4.0.Final-redhat-3</drools-version>
 		<hibernate.version>4.2.0.Final</hibernate.version>
 		<hibernate.core.version>4.2.0.Final</hibernate.core.version>
 	</properties>
